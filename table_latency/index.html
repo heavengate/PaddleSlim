@@ -111,7 +111,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../api/search_space/">搜索空间</a>
+    <a class="" href="../search_space/">搜索空间</a>
                 </li>
                 <li class=" current">
                     
@@ -172,7 +172,7 @@
     <li>硬件延时评估表</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/PaddlePaddle/PaddleSlim/blob/develop/docs/docs/table_latency.md"
+        <a href="https://github.com/PaddlePaddle/PaddleSlim/edit/master/docs/table_latency.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -208,7 +208,7 @@
 <p>操作信息字段之间以逗号分割。操作信息与延迟信息之间以制表符分割。</p>
 <h3 id="conv2d">conv2d<a class="headerlink" href="#conv2d" title="Permanent link">#</a></h3>
 <p><strong>格式</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">op_type</span><span class="p">,</span><span class="n">flag_bias</span><span class="p">,</span><span class="n">flag_relu</span><span class="p">,</span><span class="n">n_in</span><span class="p">,</span><span class="n">c_in</span><span class="p">,</span><span class="n">h_in</span><span class="p">,</span><span class="n">w_in</span><span class="p">,</span><span class="n">c_out</span><span class="p">,</span><span class="n">groups</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">padding</span><span class="p">,</span><span class="n">stride</span><span class="p">,</span><span class="n">dilation</span><span class="err">\</span><span class="n">tlatency</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">op_type,flag_bias,flag_relu,n_in,c_in,h_in,w_in,c_out,groups,kernel,padding,stride,dilation\tlatency</span>
 </pre></div>
 </td></tr></table>
 
@@ -231,7 +231,7 @@
 </ul>
 <h3 id="activation">activation<a class="headerlink" href="#activation" title="Permanent link">#</a></h3>
 <p><strong>格式</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">op_type</span><span class="p">,</span><span class="n">n_in</span><span class="p">,</span><span class="n">c_in</span><span class="p">,</span><span class="n">h_in</span><span class="p">,</span><span class="n">w_in</span><span class="err">\</span><span class="n">tlatency</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">op_type,n_in,c_in,h_in,w_in\tlatency</span>
 </pre></div>
 </td></tr></table>
 
@@ -246,7 +246,7 @@
 </ul>
 <h3 id="batch_norm">batch_norm<a class="headerlink" href="#batch_norm" title="Permanent link">#</a></h3>
 <p><strong>格式</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">op_type</span><span class="p">,</span><span class="n">active_type</span><span class="p">,</span><span class="n">n_in</span><span class="p">,</span><span class="n">c_in</span><span class="p">,</span><span class="n">h_in</span><span class="p">,</span><span class="n">w_in</span><span class="err">\</span><span class="n">tlatency</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">op_type,active_type,n_in,c_in,h_in,w_in\tlatency</span>
 </pre></div>
 </td></tr></table>
 
@@ -262,7 +262,7 @@
 </ul>
 <h3 id="eltwise">eltwise<a class="headerlink" href="#eltwise" title="Permanent link">#</a></h3>
 <p><strong>格式</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">op_type</span><span class="p">,</span><span class="n">n_in</span><span class="p">,</span><span class="n">c_in</span><span class="p">,</span><span class="n">h_in</span><span class="p">,</span><span class="n">w_in</span><span class="err">\</span><span class="n">tlatency</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">op_type,n_in,c_in,h_in,w_in\tlatency</span>
 </pre></div>
 </td></tr></table>
 
@@ -277,7 +277,7 @@
 </ul>
 <h3 id="pooling">pooling<a class="headerlink" href="#pooling" title="Permanent link">#</a></h3>
 <p><strong>格式</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">op_type</span><span class="p">,</span><span class="n">flag_global_pooling</span><span class="p">,</span><span class="n">n_in</span><span class="p">,</span><span class="n">c_in</span><span class="p">,</span><span class="n">h_in</span><span class="p">,</span><span class="n">w_in</span><span class="p">,</span><span class="n">kernel</span><span class="p">,</span><span class="n">padding</span><span class="p">,</span><span class="n">stride</span><span class="p">,</span><span class="n">ceil_mode</span><span class="p">,</span><span class="n">pool_type</span><span class="err">\</span><span class="n">tlatency</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">op_type,flag_global_pooling,n_in,c_in,h_in,w_in,kernel,padding,stride,ceil_mode,pool_type\tlatency</span>
 </pre></div>
 </td></tr></table>
 
@@ -298,7 +298,7 @@
 </ul>
 <h3 id="softmax">softmax<a class="headerlink" href="#softmax" title="Permanent link">#</a></h3>
 <p><strong>格式</strong></p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">op_type</span><span class="p">,</span><span class="n">axis</span><span class="p">,</span><span class="n">n_in</span><span class="p">,</span><span class="n">c_in</span><span class="p">,</span><span class="n">h_in</span><span class="p">,</span><span class="n">w_in</span><span class="err">\</span><span class="n">tlatency</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">op_type,axis,n_in,c_in,h_in,w_in\tlatency</span>
 </pre></div>
 </td></tr></table>
 
@@ -322,7 +322,7 @@
         <a href="../algo/algo/" class="btn btn-neutral float-right" title="算法原理">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../api/search_space/" class="btn btn-neutral" title="搜索空间"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../search_space/" class="btn btn-neutral" title="搜索空间"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -350,7 +350,7 @@
           <a href="https://github.com/PaddlePaddle/PaddleSlim/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../api/search_space/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../search_space/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../algo/algo/" style="color: #fcfcfc">Next &raquo;</a></span>

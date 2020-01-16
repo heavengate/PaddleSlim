@@ -111,7 +111,7 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../../api/search_space/">搜索空间</a>
+    <a class="" href="../../search_space/">搜索空间</a>
                 </li>
                 <li class="">
                     
@@ -150,7 +150,7 @@
     <li>Sensitivity demo</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/PaddlePaddle/PaddleSlim/blob/develop/docs/docs/tutorials/sensitivity_demo.md"
+        <a href="https://github.com/PaddlePaddle/PaddleSlim/edit/master/docs/tutorials/sensitivity_demo.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -177,8 +177,8 @@
 <h2 id="2">2. 运行示例<a class="headerlink" href="#2" title="Permanent link">#</a></h2>
 <p>在路径<code>PaddleSlim/demo/sensitive</code>下执行以下代码运行示例：</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">export</span> <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span>
-<span class="n">python</span> <span class="n">train</span><span class="p">.</span><span class="n">py</span> <span class="c1">--model &quot;MobileNetV1&quot;</span>
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">export CUDA_VISIBLE_DEVICES=0</span>
+<span class="err">python train.py --model &quot;MobileNetV1&quot;</span>
 </pre></div>
 </td></tr></table>
 
@@ -196,14 +196,14 @@
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="err">进程</span><span class="mi">1</span>
-<span class="n">sensitivity</span><span class="p">(</span>
-    <span class="n">val_program</span><span class="p">,</span>
-    <span class="n">place</span><span class="p">,</span>
-    <span class="n">params</span><span class="p">,</span>
-    <span class="n">test</span><span class="p">,</span>
-    <span class="n">sensitivities_file</span><span class="o">=</span><span class="ss">&quot;sensitivities_0.data&quot;</span><span class="p">,</span>
-    <span class="n">pruned_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">4</span><span class="p">])</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err"># 进程1</span>
+<span class="err">sensitivity(</span>
+<span class="err">    val_program,</span>
+<span class="err">    place,</span>
+<span class="err">    params,</span>
+<span class="err">    test,</span>
+<span class="err">    sensitivities_file=&quot;sensitivities_0.data&quot;,</span>
+<span class="err">    pruned_ratios=[0.1, 0.2, 0.3, 0.4])</span>
 </pre></div>
 </td></tr></table>
 
@@ -214,26 +214,26 @@
 5
 6
 7
-8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">#</span> <span class="err">进程</span><span class="mi">2</span>
-<span class="n">sensitivity</span><span class="p">(</span>
-    <span class="n">val_program</span><span class="p">,</span>
-    <span class="n">place</span><span class="p">,</span>
-    <span class="n">params</span><span class="p">,</span>
-    <span class="n">test</span><span class="p">,</span>
-    <span class="n">sensitivities_file</span><span class="o">=</span><span class="ss">&quot;sensitivities_1.data&quot;</span><span class="p">,</span>
-    <span class="n">pruned_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">7</span><span class="p">])</span>
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err"># 进程2</span>
+<span class="err">sensitivity(</span>
+<span class="err">    val_program,</span>
+<span class="err">    place,</span>
+<span class="err">    params,</span>
+<span class="err">    test,</span>
+<span class="err">    sensitivities_file=&quot;sensitivities_1.data&quot;,</span>
+<span class="err">    pruned_ratios=[0.5, 0.6, 0.7])</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="32">3.2 合并敏感度<a class="headerlink" href="#32" title="Permanent link">#</a></h3>
 <p>如果用户通过上一节多进程的方式生成了多个存储敏感度信息的文件，可以通过<code>paddleslim.prune.merge_sensitive</code>将其合并，合并后的敏感度信息存储在一个<code>dict</code>中。代码如下：</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="n">merge_sensitive</span><span class="p">([</span><span class="ss">&quot;./sensitivities_0.data&quot;</span><span class="p">,</span> <span class="ss">&quot;./sensitivities_1.data&quot;</span><span class="p">])</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">sens = merge_sensitive([&quot;./sensitivities_0.data&quot;, &quot;./sensitivities_1.data&quot;])</span>
 </pre></div>
 </td></tr></table>
 
 <h3 id="33">3.3 计算剪裁率<a class="headerlink" href="#33" title="Permanent link">#</a></h3>
 <p>调用<code>paddleslim.prune.get_ratios_by_loss</code>接口计算一组剪裁率。</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">ratios</span> <span class="o">=</span> <span class="n">get_ratios_by_loss</span><span class="p">(</span><span class="n">sens</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">01</span><span class="p">)</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="err">ratios = get_ratios_by_loss(sens, 0.01)</span>
 </pre></div>
 </td></tr></table>
 
